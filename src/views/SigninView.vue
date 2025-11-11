@@ -2,6 +2,7 @@
 import SContainer from '@/components/common/SContainer.vue';
 import baseInput from '@/components/common/baseInput.vue';
 import ButtonComponent from '@/components/common/ButtonComponent.vue';
+import { setUsername } from '@/stores/user'
 import { useRouter } from 'vue-router'
 import {ref} from 'vue'
 const router = useRouter()
@@ -11,6 +12,7 @@ const if_all_fields = ref(false)
 function login() {
     if (username.value && password.value){
         alert(`Logged in as ${username.value}`)
+        setUsername(username.value)
         router.push('/Shopping')
         }
     else {
