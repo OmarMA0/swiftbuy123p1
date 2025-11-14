@@ -6,7 +6,7 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-    <div class="hero w-full text-white flex gap-10" style="min-height: 100vh; min-height: 100dvh;">
+    <div class="hero w-full text-white flex gap-10">
         <h1 class=" m-2 p-3 font-style: italic drop-shadow-lg text-9xl font-bold text-[#f5cb5c]">Swiftbuy</h1>
         <div 
         class="flex items-center justify-center w-full">
