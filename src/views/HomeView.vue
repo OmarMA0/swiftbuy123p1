@@ -26,6 +26,9 @@ import { RouterLink } from 'vue-router'
 
 </template>
 <style>
+body {
+    background-color: #242423;
+}
 .hero {
     position: relative;
     background-size: cover;
