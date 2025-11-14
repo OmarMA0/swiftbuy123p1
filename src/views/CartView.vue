@@ -24,7 +24,7 @@ function checkout(){
 </script>
 
 <template>
-    <div class="hero min-h-screen w-full text-white flex flex-wrap gap-100 bg-cover bg-center"> 
+    <div class="text-white flex flex-wrap gap-4 md:gap-40 bg-cover bg-center"> 
     <div v-for="product in carted_products" class="flex-wrap">
         <CartedCard :product="product" ></CartedCard>
         </div>

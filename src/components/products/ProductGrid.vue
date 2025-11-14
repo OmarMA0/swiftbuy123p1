@@ -51,7 +51,7 @@ try{
             <ProductCard :product="product"></ProductCard>
             </div>
         </div>
-    <div v-else class=" flex m-5 justify-center flex-wrap gap-40">
+    <div v-else class=" flex m-5 justify-center flex-wrap gap-4 md:gap-20">
         <div v-for="product in paginated_products" :key="product.id ">
             <ProductCard :product="product"></ProductCard></div>
         <div class="absolute bottom-0 left-200 flex">
