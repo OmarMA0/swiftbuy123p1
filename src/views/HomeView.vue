@@ -30,9 +30,12 @@ body {
     background-color: #242423;
 }
 .hero {
-    position: relative;
-    background-size: cover;
-    background-position: center;
+    @apply relative;
     background-image: linear-gradient(to bottom, rgba(0,0,0,.2) 20%, rgba(0,0,0,0.8) 100%), url('../assets/images/Background.jpg');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: repeat; /* Repeats if content is taller */
+    background-attachment: scroll;
 }
+
 </style>
