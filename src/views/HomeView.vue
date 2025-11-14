@@ -6,7 +6,7 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-    <div class="hero w-full text-white flex gap-10">
+    <div class="w-full text-white flex gap-10">
         <h1 class=" m-2 p-3 font-style: italic drop-shadow-lg text-9xl font-bold text-[#f5cb5c]">Swiftbuy</h1>
         <div 
         class="flex items-center justify-center w-full">
@@ -26,13 +26,15 @@ import { RouterLink } from 'vue-router'
 
 </template>
 <style>
-.hero {
-    @apply relative;
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
     background-image: linear-gradient(to bottom, rgba(0,0,0,.2) 20%, rgba(0,0,0,0.8) 100%), url('../assets/images/Background.jpg');
     background-size: cover;
-    background-position: center top;
-    background-repeat: repeat; /* Repeats if content is taller */
-    background-attachment: scroll;
+    background-position: center;
+    background-attachment: fixed; /* Keeps background fixed while scrolling */
+    background-repeat: no-repeat;
 }
 
 </style>
