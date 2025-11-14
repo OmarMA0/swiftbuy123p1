@@ -18,7 +18,7 @@ function delete_product(){
 </script>
 
 <template>
-  <div class="border-4 rounded-xl p-5 m-2 w-128 h-115 bg-[#242423] border-[#f5cb5c] shadow-lg flex flex-col gap-3">
+  <div class="border-4 rounded-xl p-5 m-2 w-128 h-120 bg-[#242423] border-[#f5cb5c] shadow-lg flex flex-col gap-3">
     <h1>{{ product.title }}</h1>
         <p>price :{{ product.price }}</p>
         <p>amount available : {{ product.rating.count }}</p>
