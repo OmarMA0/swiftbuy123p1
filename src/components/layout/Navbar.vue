@@ -14,7 +14,7 @@ function Logout(){
 </script>
 
 <template>
-    <div class="sticky top-0 flex flex-wrap bg-[#242423] justify-center items-center gap-2 md:gap-4 lg:gap-20 w-auto text-white border-1 rounded border-[#f5cb5c] p-2">
+    <div class="sticky top-0 flex flex-wrap bg-[#242423] justify-center items-center gap-2 md:gap-4 lg:gap-20 min-w-full text-white border-1 rounded border-[#f5cb5c] p-2">
         <p v-if="username" class="justify-start m-1 p-1 text-lg border-2 border-[#f5cb5c] font-bold drop-shadow-lg rounded"> Welcome back {{ username }}</p>
         <ButtonComponent><RouterLink to="/">Home</RouterLink></ButtonComponent>
 <ButtonComponent v-if="username"> <RouterLink to="/CartView">Cart</RouterLink></ButtonComponent>
