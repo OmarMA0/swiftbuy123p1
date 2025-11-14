@@ -1,32 +1,57 @@
 <script setup>
+import { ref } from 'vue';
 import ButtonComponent from '../common/ButtonComponent.vue';
 import baseInput from '../common/baseInput.vue';
-import { RouterLink} from 'vue-router'
-import { useRouter } from 'vue-router'
-import { ref } from 'vue';
-import { username, clearUsername } from '@/stores/user'
-import {search} from '@/stores/search'
-const router = useRouter()
-function Logout(){
-    clearUsername()
-    router.push('/')
+import { RouterLink } from 'vue-router';
+import { useRouter } from 'vue-router';
+import { username, clearUsername } from '@/stores/user';
+import { search } from '@/stores/search';
+
+const router = useRouter();
+const mobileMenuOpen = ref(false);
+
+function Logout() {
+    clearUsername();
+    router.push('/');
 }
 </script>
 
 <template>
-    <div class="sticky top-0 flex flex-wrap bg-[#242423] justify-center items-center gap-2 md:gap-4 lg:gap-20 w-full text-white border-1 rounded border-[#f5cb5c] p-2">
-        <p v-if="username" class="justify-start m-1 p-1 text-lg border-2 border-[#f5cb5c] font-bold drop-shadow-lg rounded"> Welcome back {{ username }}</p>
-        <ButtonComponent><RouterLink to="/">Home</RouterLink></ButtonComponent>
-<ButtonComponent v-if="username"> <RouterLink to="/CartView">Cart</RouterLink></ButtonComponent>
-    <div class="flex gap-4">
-        <ButtonComponent >
-            <RouterLink to="Shopping">
-            Shopping
-            </RouterLink>
-        </ButtonComponent>
-        <baseInput v-model="search"  placeholder="search ..."></baseInput>
-        
-    </div>
-<ButtonComponent v-if="username" @click="Logout"> Logout </ButtonComponent>
+    <nav class="sticky top-0 z-50 w-full bg-[#242423] border-b-2 border-[#f5cb5c] shadow-lg">
+        <!-- Desktop -->
+        <div class="hidden md:flex items-center justify-between px-4 py-3 gap-4">
+            <div class="flex items-center gap-3 shrink-0">
+                <ButtonComponent><RouterLink to="/">Home</RouterLink></ButtonComponent>
+                <ButtonComponent v-if="username"><RouterLink to="/CartView">Cart</RouterLink></ButtonComponent>
+            </div>
+            
+            <p v-if="username" class="px-4 py-2 border-2 border-[#f5cb5c] rounded text-[#f5cb5c] font-bold whitespace-nowrap">
+                Welcome {{ username }}
+            </p>
+            
+            <div class="flex items-center gap-3 shrink-0">
+                <ButtonComponent><RouterLink to="Shopping">Shopping</RouterLink></ButtonComponent>
+                <baseInput v-model="search" placeholder="search..." class="w-48"></baseInput>
+                <ButtonComponent v-if="username" @click="Logout">Logout</ButtonComponent>
+            </div>
         </div>
+
+        <!-- Mobile -->
+        <div class="md:hidden">
+            <div class="flex items-center justify-between px-4 py-3">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="p-2 text-[#f5cb5c]">
+                    {{ mobileMenuOpen ? '✕' : '☰' }}
+                </button>
+                <span v-if="username" class="text-[#f5cb5c] text-sm">Hi, {{ username }}</span>
+            </div>
+
+            <div v-if="mobileMenuOpen" class="bg-[#1a1a19] border-t border-[#f5cb5c] px-4 py-3 space-y-2">
+                <baseInput v-model="search" placeholder="search..." class="w-full mb-3"></baseInput>
+                <ButtonComponent class="w-full"><RouterLink to="/">Home</RouterLink></ButtonComponent>
+                <ButtonComponent v-if="username" class="w-full"><RouterLink to="/CartView">Cart</RouterLink></ButtonComponent>
+                <ButtonComponent class="w-full"><RouterLink to="Shopping">Shopping</RouterLink></ButtonComponent>
+                <ButtonComponent v-if="username" @click="Logout" class="w-full">Logout</ButtonComponent>
+            </div>
+        </div>
+    </nav>
 </template>
