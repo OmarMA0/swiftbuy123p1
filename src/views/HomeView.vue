@@ -26,8 +26,10 @@ import { RouterLink } from 'vue-router'
 
 </template>
 <style>
-.hero{
-    @apply bg-cover bg-center relative bg-fixed;
+.hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
     background-image: linear-gradient(to bottom, rgba(0,0,0,.2) 20%, rgba(0,0,0,0.8) 100%), url('../assets/images/Background.jpg');
 }
 </style>
