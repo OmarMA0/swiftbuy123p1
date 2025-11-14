@@ -26,9 +26,6 @@ import { RouterLink } from 'vue-router'
 
 </template>
 <style>
-body {
-    background-color: #242423;
-}
 .hero {
     @apply relative;
     background-image: linear-gradient(to bottom, rgba(0,0,0,.2) 20%, rgba(0,0,0,0.8) 100%), url('../assets/images/Background.jpg');
