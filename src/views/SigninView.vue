@@ -23,7 +23,7 @@ function login() {
 </script>
 
 <template>
-    <div class="hero h-screen w-screen bg-cover bg-center flex items-center justify-center text-white">
+    <div class="flex items-center justify-center text-white">
         <SContainer >
             <p>Username : <baseInput v-model="username"></baseInput></p>
             <p>Password : <baseInput type="password" v-model="password"></baseInput></p>
