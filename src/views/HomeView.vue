@@ -6,12 +6,12 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-    <div class="w-full text-white flex gap-10">
-        <h1 class=" m-2 p-3 font-style: italic drop-shadow-lg text-9xl font-bold text-[#f5cb5c]">Swiftbuy</h1>
+    <div class="min-h-screen w-full text-white flex flex-col lg:flex-row gap-4 md:gap-10 p-4 md:p-6">
+        <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-bold text-[#f5cb5c] drop-shadow-lg italic m-2 p-3">Swiftbuy</h1>
         <div 
         class="flex items-center justify-center w-full">
-        <div class="flex-col  rounded-xl p-5 m-2 w-128 h-auto bg-[#242423]/50 
-        border-[#f5cb5c] shadow-lg flex flex-col gap-5 text-white" v-if="!username">
+        <div class="rounded-xl p-4 sm:p-5 md:p-6 m-2 w-full sm:w-96 md:w-[32rem] h-auto bg-[#242423]/50 border-2
+         border-[#f5cb5c] shadow-lg flex flex-col gap-4 md:gap-5 text-white" v-if="!username">
     <p class="justify-start m-3 p-3 text-lg border-2 border-[#f5cb5c] font-bold drop-shadow-lg rounded">new to Swiftbuy? make a new account here to start shopping</p>
     <ButtonComponent class="grow"><router-link class="block w-full h-full" to="/Signup">Sign up</router-link></ButtonComponent>
     <p class="justify-start m-3 p-3 text-lg border-2 border-[#f5cb5c] font-bold drop-shadow-lg rounded">already have an account?</p>
