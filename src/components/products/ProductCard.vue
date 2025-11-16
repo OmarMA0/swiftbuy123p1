@@ -1,7 +1,6 @@
 <script setup>
 import ButtonComponent from '../common/ButtonComponent.vue';
 import { carted_products , add_product } from '@/stores/carted_products';
-import { username } from '@/stores/user';
 const props = defineProps(['product'])
 import { useRouter , RouterLink } from 'vue-router'
 const router = useRouter()
@@ -25,11 +24,8 @@ function toCart(){
         alt="product"
               />
     </div>
-        <div class="w-full mt-auto" v-if="username">
+        <div class="w-full mt-auto">
     <ButtonComponent  class="w-full text-sm md:text-base"  @click="toCart">add to cart</ButtonComponent>
-          </div>
-          <div class="w-full mt-auto" v-else>
-    <ButtonComponent  class="w-full text-sm md:text-base" ><RouterLink class="block w-full h-full"  to="/Signin"> Sign in </RouterLink></ButtonComponent>
           </div>
 
   </div>

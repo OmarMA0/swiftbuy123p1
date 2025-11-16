@@ -46,12 +46,12 @@ try{
     <p v-else-if="error" class="text-center text-lg md:text-xl p-4 md:p-8 text-red-500"> Error {{ error }}</p>
     <div class="p-4 md:p-6 lg:p-8 pb-45 md:pb-40"  v-else>
     <div v-if="search.length > 0">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6"
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6"
         v-for="product in filtered_data" :key="product.id ">
             <ProductCard :product="product"></ProductCard>
             </div>
         </div>
-    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+    <div v-else class="text-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8 lg:gap-50">
         <div v-for="product in paginated_products" :key="product.id ">
             <ProductCard :product="product"></ProductCard></div>
 
