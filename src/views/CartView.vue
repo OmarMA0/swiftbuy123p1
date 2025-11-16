@@ -37,7 +37,7 @@ function checkout(){
         <div class="flex w-auto h-auto gap-5">
         <div v-if="username && carted_products.length > 0">
             <ButtonComponent class="grow" @click="checkout">Check out</ButtonComponent></div>
-        <div v-else-if="!username && carted_products.length > 0"> <RouterLink to="Signin"><ButtonComponent> Login to checkout </ButtonComponent></RouterLink></div>
+        <div v-else-if="!username"> <RouterLink to="Signin"><ButtonComponent> Login to checkout </ButtonComponent></RouterLink></div>
         <div v-else-if="username && carted_products.length === 0"> <ButtonComponent class="grow bg-gray-600 text-gray-300 cursor-not-allowed" disabled>Check out</ButtonComponent> </div>
             <ButtonComponent class="grow"><RouterLink to="/Shopping">Continue shopping</RouterLink></ButtonComponent>
         </div>
