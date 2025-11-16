@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 import { is_in_carted_products , add_product , remove_product } from '@/stores/carted_products';
 import { computed } from 'vue';
 import { ViewedP } from '@/stores/viewedP';
+import { ShoppingCart } from 'lucide-vue-next';
 const product = computed(()=>ViewedP.value)
 const Addition_Removal = computed(()=>{
     if (!product.value || !product.value.id) {
@@ -46,7 +47,10 @@ function Add_Remove(){
           <p class="text-sm sm:text-base text-gray-300">Amount available: {{ product.rating.count }}</p>
           <p class="text-sm sm:text-base text-gray-300">Rating: ⭐{{ product.rating.rate }}/5</p>
         </div>
-        <button-component @click="Add_Remove" class="w-full md:w-auto">{{ Addition_Removal }}</button-component>
+        <button-component @click="Add_Remove" class="w-full md:w-auto flex justify-center items-center gap-2">
+            <ShoppingCart :size="18"/>
+            <span>{{ Addition_Removal }}</span>
+        </button-component>
     </div>
     </div>
     </div>

@@ -3,6 +3,7 @@ import ButtonComponent from '../components/common/ButtonComponent.vue';
 import SContainer from '@/components/common/SContainer.vue';
 import { username} from '@/stores/user'
 import { RouterLink } from 'vue-router'
+import { ShoppingCart , ShoppingBag } from 'lucide-vue-next';
 </script>
 
 <template>
@@ -19,7 +20,8 @@ import { RouterLink } from 'vue-router'
         </div>
     <SContainer v-if="username">
         <p>Wlcome back {{ username }} start shopping from here</p>
-        <ButtonComponent><router-link class="block w-full h-full" to="/Shopping">Shopping</router-link></ButtonComponent>
+        <ButtonComponent><router-link class="flex justify-center items-center gap-2" to="/Shopping"><ShoppingBag :size="18"/>
+            <span>Shopping</span></router-link></ButtonComponent>
     </SContainer>
     </div>
     </div>

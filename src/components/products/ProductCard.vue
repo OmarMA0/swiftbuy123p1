@@ -3,6 +3,7 @@ import ButtonComponent from '../common/ButtonComponent.vue';
 import { carted_products , add_product } from '@/stores/carted_products';
 import { view_product } from '@/stores/viewedP';
 const props = defineProps(['product'])
+import { ShoppingCart } from 'lucide-vue-next';
 import { useRouter , RouterLink } from 'vue-router'
 const router = useRouter()
 
@@ -33,7 +34,9 @@ function toProduct(){
     </div>
     </div>
         <div class="w-full mt-auto">
-    <ButtonComponent  class="w-full text-sm md:text-base"  @click="toCart">add to cart</ButtonComponent>
+    <ButtonComponent  class="w-full text-sm md:text-base flex justify-center items-center gap-2"  @click="toCart">
+    <ShoppingCart :size="18"/>  <span>Add to cart</span>
+    </ButtonComponent>
           </div>
 
   </div>
