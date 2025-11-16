@@ -21,8 +21,8 @@ function Logout() {
         <!-- Desktop -->
         <div class="hidden md:flex items-center justify-between px-4 py-3 gap-4">
             <div class="flex items-center gap-3 shrink-0">
-                <ButtonComponent><RouterLink to="/">Home</RouterLink></ButtonComponent>
-                <ButtonComponent v-if="username"><RouterLink to="/CartView">Cart</RouterLink></ButtonComponent>
+                <RouterLink to="/"><ButtonComponent>Home</ButtonComponent></RouterLink>
+                <RouterLink to="/CartView"><ButtonComponent v-if="username">Cart</ButtonComponent></RouterLink>
             </div>
             
             <p v-if="username" class="px-4 py-2 border-2 border-[#f5cb5c] rounded text-[#f5cb5c] font-bold whitespace-nowrap">
@@ -30,7 +30,7 @@ function Logout() {
             </p>
             
             <div class="flex items-center gap-3 shrink-0">
-                <ButtonComponent><RouterLink to="Shopping">Shopping</RouterLink></ButtonComponent>
+                <RouterLink to="/Shopping"><ButtonComponent>Shopping</ButtonComponent></RouterLink>
                 <baseInput v-model="search" placeholder="search..." class="w-48"></baseInput>
                 <ButtonComponent v-if="username" @click="Logout">Logout</ButtonComponent>
             </div>
@@ -47,9 +47,9 @@ function Logout() {
 
             <div v-if="mobileMenuOpen" class="bg-[#1a1a19] border-t border-[#f5cb5c] px-4 py-3 space-y-2">
                 <baseInput v-model="search" placeholder="search..." class="w-full mb-3"></baseInput>
-                <ButtonComponent class="w-full"><RouterLink to="/">Home</RouterLink></ButtonComponent>
-                <ButtonComponent v-if="username" class="w-full"><RouterLink to="/CartView">Cart</RouterLink></ButtonComponent>
-                <ButtonComponent class="w-full"><RouterLink to="Shopping">Shopping</RouterLink></ButtonComponent>
+                <RouterLink to="/"><ButtonComponent class="w-full">Home</ButtonComponent></RouterLink>
+                <RouterLink to="/CartView"><ButtonComponent v-if="username" class="w-full">Cart</ButtonComponent></RouterLink>
+                <RouterLink to="/Shopping"><ButtonComponent class="w-full">Shopping</ButtonComponent></RouterLink>
                 <ButtonComponent v-if="username" @click="Logout" class="w-full">Logout</ButtonComponent>
             </div>
         </div>

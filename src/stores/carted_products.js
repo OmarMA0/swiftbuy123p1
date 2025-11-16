@@ -14,7 +14,6 @@ export function add_product(product){
 }
 export function remove_product(id){
     carted_products.value = carted_products.value.filter(p=>p.id !== id)
-    console.log(carted_products.value)
 }
 
 export function increase_B_amount(id) {   //increases the buying amount
@@ -32,4 +31,12 @@ export function decrease_B_amount(id) {   // decreases the buying amount
 export function get_carted_product(id){
     const product = carted_products.value.find(p=>p.id === id)
     return product
+}
+export function is_in_carted_products(id){
+    if (carted_products.value.find(p=>p.id === id)) {
+        return true
+    }
+    else {
+        return false
+    }
 }
