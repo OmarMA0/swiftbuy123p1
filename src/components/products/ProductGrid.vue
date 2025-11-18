@@ -1,11 +1,10 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue';
 import {search} from '@/stores/search'
+import { products , isloading , error } from '@/stores/products';
 import ProductCard from './ProductCard.vue';
 import ButtonComponent from '../common/ButtonComponent.vue';
-const data = ref(null)
-const isloading = ref(true)
-const error = ref(null)
+const data = computed(()=>products.value)
 const prdoucts_per_page = 3
 const current_page = ref(1)
 const paginated_products = computed(()=>{
@@ -27,17 +26,7 @@ function next_page(){
 const filtered_data = computed(()=>
 (data.value|| []).filter(p=>p.title.toLowerCase().includes(search.value.toLowerCase()))
 )
-onMounted(async()=>{
-try{
-    const res = await fetch('https://fakestoreapi.com/products')
-    if(!res.ok) throw Error('Network Error')
-    data.value = await res.json()
-}catch (err){
-    error.value = err.message
-}finally {
-    isloading.value = false 
-}
-})
+
 
 </script>
 

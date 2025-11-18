@@ -1,13 +1,17 @@
 <script setup>
+import { onMounted } from 'vue';
 import Navbar from './components/layout/Navbar.vue';
-import ProductGrid from './components/products/ProductGrid.vue';
-import { RouterLink, RouterView } from 'vue-router'
+import { fetchProducts , products } from './stores/products';
+import {RouterView } from 'vue-router'
+onMounted(()=>{
+   fetchProducts()
+})
 </script>
 
 <template>
     <div style="min-width: 100%; overflow-x: auto;">
     <Navbar></Navbar>
-    <router-view />
+    <RouterView />
     </div>
 </template>
 
