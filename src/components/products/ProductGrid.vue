@@ -59,12 +59,14 @@ function handleCategory(x){
 
 <template>
     <!--Sorting and Categories-->
-     <div class="absolute top-16 lg:top-18 left-1/2 -translate-x-1/2 w-full ">
-            <div class="w-auto flex flex-row justify-center gap-2 sm:gap-2 md:gap-6 lg:gap-10">
+     <div class="absolute top-10 left-1/2 -translate-x-1/2 w-full flex justify-center ">
+            <div class="flex flex-row gap-3 sm:gap-4 md:gap-8 lg:gap-10 
+              bg-[#242423]/70 backdrop-blur-sm border border-[#f5cb5c] 
+              rounded-xl px-4 py-3 md:px-6 md:py-4 shadow-lg">
             <DropDownComponent @control-clicked="handleSorting" 
             :controls="['Rating' , 'Price' , 'Default']">Sorting</DropDownComponent>
             <DropDownComponent @control-clicked="handleCategory" 
-            :controls="[...category, 'Default']">Category</DropDownComponent>
+            :controls="[...category, 'Default']">Category</DropDownComponent> 
             </div>
         </div>
     
