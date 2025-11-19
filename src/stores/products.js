@@ -4,6 +4,7 @@ export const products = ref([]);
 export const isloading = ref(true);
 export const error = ref(null);
 export const featured_products = ref([])
+export const category = ref([])
 
 export async function fetchProducts() {
   // Check localStorage first
@@ -37,4 +38,13 @@ export function calculate_featured(){
     featured_products.value = [...products.value].sort((b,a)=>a.rating.rate - b.rating.rate ).slice(0,3)
 
 
+}
+export function get_categories() {
+  console.log(products.value)
+
+  for (const product of products.value) {
+    if (!category.value.includes(product.category)) {
+      category.value.push(product.category)
+    }
+  }
 }
