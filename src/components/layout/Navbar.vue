@@ -49,7 +49,6 @@ function Logout() {
                     </ButtonComponent>
                 </RouterLink>
                 
-                <baseInput v-model="search" placeholder="search..." class="w-48"></baseInput>
                 
                 <ButtonComponent v-if="username" @click="Logout" class="flex items-center gap-2">
                     <LogOut :size="18" />
@@ -69,7 +68,6 @@ function Logout() {
             </div>
 
             <div v-if="mobileMenuOpen" class="bg-[#1a1a19] border-t border-[#f5cb5c] px-4 py-3 space-y-2">
-                <baseInput v-model="search" placeholder="search..." class="w-full mb-3"></baseInput>
                 
                 <RouterLink to="/">
                     <ButtonComponent class="w-full flex items-center justify-center gap-2">

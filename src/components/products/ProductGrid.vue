@@ -1,12 +1,14 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue';
 import {search} from '@/stores/search'
+import baseInput from '../common/baseInput.vue';
 import { products , isloading , error , category , get_categories } from '@/stores/products';
 import ProductCard from './ProductCard.vue';
 import ButtonComponent from '../common/ButtonComponent.vue';
 import DropDownComponent from '../common/DropDownComponent.vue';
 const sortControl = ref('')
 const categoryControl = ref('')
+const mobileMenuOpen = ref(false)
 get_categories()
 const data = computed(()=>{
 if (!sortControl.value && !categoryControl.value) 
@@ -58,23 +60,45 @@ function handleCategory(x){
 </script>
 
 <template>
-    <!--Sorting and Categories-->
-     <div class="absolute top-10 left-1/2 -translate-x-1/2 w-full flex justify-center ">
-            <div class="flex flex-row gap-3 sm:gap-4 md:gap-8 lg:gap-10 
+    <!--Sorting , Search and Categories for PC-->
+     <div class="hidden  md:block absolute top-10 left-1/2 -translate-x-1/2 w-full justify-center
+              gap-3 sm:gap-4 md:gap-8 lg:gap-10 
               bg-[#242423]/70 backdrop-blur-sm border border-[#f5cb5c] 
-              rounded-xl px-4 py-3 md:px-6 md:py-4 shadow-lg">
+              rounded-xl px-4 pt-3 md:px-6 md:py-4 shadow-lg ">
+            <div class="flex flex-row gap-3 sm:gap-4 md:gap-8 lg:gap-10 
+              ">
             <DropDownComponent @control-clicked="handleSorting" 
             :controls="['Rating' , 'Price' , 'Default']">Sorting</DropDownComponent>
             <DropDownComponent @control-clicked="handleCategory" 
             :controls="[...category, 'Default']">Category</DropDownComponent> 
+            <div class="pt-1 lg:pt-5 m-auto w-full"><baseInput v-model="search" placeholder="search..." class="w-full mb-3"></baseInput></div>
             </div>
+            <div class="flex flex-row gap-10">
+                <span class="text-center text-base md:text-lg p-2 md:p-4 text-white">Sorted by <span class="text-[#f5cb5c]">{{ sortControl? sortControl : "Default" }}</span></span>
+                <span class="text-center text-base md:text-lg p-2 md:p-4 text-white">Applied Category <span class="text-[#f5cb5c]">{{ categoryControl? categoryControl: "None" }}</span></span>
+            </div>
+            
         </div>
-    
+    <!--Sorting , Search and Categories for Mobile-->
+    <div class="flex flex-col md:hidden gap-2 px-3 py-2 h-auto bg-[#242423]/50 backdrop-blur-sm " >
+        <ButtonComponent @click="mobileMenuOpen=!mobileMenuOpen">Filters</ButtonComponent>
+        <DropDownComponent @control-clicked="handleSorting" 
+            :controls="['Rating' , 'Price' , 'Default']">Sorting</DropDownComponent>
+            <DropDownComponent @control-clicked="handleCategory" 
+            :controls="[...category, 'Default']">Category</DropDownComponent> 
+            <div class="pt-1 lg:pt-5 w-auto"><baseInput v-model="search" placeholder="search..." class="w-full mb-3"></baseInput></div>
+            <span class="text-center text-base md:text-lg py-2 md:p-4 text-white">Sorted by <span class="text-[#f5cb5c]">{{ sortControl? sortControl : "Default" }}</span></span>
+            <span class="text-center text-base md:text-lg py-2 md:p-4 text-white">Applied Category <span class="text-[#f5cb5c]">{{ categoryControl? categoryControl: "None" }}</span></span>
+    </div>
+
+
+
+
     <p v-if="isloading"class="text-center text-lg md:text-xl p-4 md:p-8 text-white">loading ...</p>
     <p v-else-if="error" class="text-center text-lg md:text-xl p-4 md:p-8 text-red-500"> Error {{ error }}</p>
     
-    <!--the product grid body-->
-    <div class="p-4 md:p-6 lg:p-8 pb-40 md:pb-40 pt-24 md:pt-32 lg:pt-40 "  v-else>
+    <!--The Product Grid Body-->
+    <div class="p-2 md:p-6 lg:p-8 pb-40 md:pb-40 pt-24 md:pt-32 lg:pt-40 "  v-else>
     <div v-if="search.length > 0">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6"
         v-for="product in filtered_data" :key="product.id ">
@@ -85,7 +109,7 @@ function handleCategory(x){
     <div v-else class="text-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8 lg:gap-50">
         <div v-for="product in paginated_products" :key="product.id ">
             <ProductCard :product="product"></ProductCard></div>
-        <!-- Bottom control -->
+        <!-- Bottom Control -->
         <div class="fixed bottom-4 left-1/2 -translate-x-1/2 flex flex-col sm:flex-row items-center gap-2 sm:gap-4 bg-[#242423]/90 p-3 md:p-4 rounded-lg border-2 border-[#f5cb5c] backdrop-blur-sm">
             <ButtonComponent class="w-full sm:w-auto text-sm md:text-base"
             @click="prev_page">< Previous </ButtonComponent>
