@@ -5,6 +5,8 @@ import { username } from '@/stores/user';
 import { RouterLink } from 'vue-router';
 import { ShoppingBag } from 'lucide-vue-next';
 import { calculate_featured, featured_products } from '@/stores/products';
+import rowShowItems from '@/components/common/rowShowItems.vue';
+import { products } from '@/stores/products';
 import ProductCard from '@/components/products/ProductCard.vue';
 
 calculate_featured();
@@ -97,6 +99,27 @@ calculate_featured();
                     <!-- Empty State -->
                     <div v-if="!featured_products || featured_products.length === 0" class="text-center py-12">
                         <p class="text-gray-400 text-lg">No featured products available</p>
+                    </div>
+                </div>
+                <!-- Products Silde Shows (Bottom Left Column) -->
+                <div>
+                    <!---Electronics--->
+                    <div class="flex flex-col">
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#f5cb5c] p-2 rounded mb-4">Electronics</h3>
+                    <rowShowItems :products="[...products].filter(p=>p.category === 'electronics')"></rowShowItems>
+                    </div>
+                    <!---Jewelery--->
+                    <div class="flex flex-col">
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#f5cb5c] p-2 rounded mb-4">Jewelery</h3>
+                    <rowShowItems :products="[...products].filter(p=>p.category === 'jewelery')"></rowShowItems>
+                    </div>
+                    <div class="flex flex-col">
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#f5cb5c] p-2 rounded mb-4">Clothing for Men</h3>
+                    <rowShowItems :products="[...products].filter(p=>p.category === `men's clothing`)"></rowShowItems>
+                    </div>
+                    <div class="flex flex-col">
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#f5cb5c] p-2 rounded mb-4">Clothing for Women</h3>
+                    <rowShowItems :products="[...products].filter(p=>p.category === `women's clothing`)"></rowShowItems>
                     </div>
                 </div>
             </div>
