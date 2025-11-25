@@ -5,16 +5,14 @@ import { computed, ref , onMounted , onUnmounted } from 'vue';
 const props = defineProps(['products'])
 const windowWidth = ref(window.innerWidth)
 const itemsToShow = computed(()=>{
-    if(windowWidth < 640) return 1
-    else if (windowWidth >= 640 && windowWidth < 1024) return 2
+    if(windowWidth.value < 640) return 1
+    else if (windowWidth.value >= 640 && windowWidth.value < 1024) return 2
     else return 3
 })
 const currentIndex = ref(0);
-
 // Get the visible products
 const visibleProducts = computed(() => {
     if (!props.products || props.products.length === 0) return [];
-    
     const items = [];
     for (let i = 0; i < itemsToShow.value; i++) {
         const index = (currentIndex.value + i) % props.products.length;

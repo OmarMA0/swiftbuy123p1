@@ -80,8 +80,8 @@ calculate_featured();
                 </div>
 
                 <!-- Right Column: Featured Products -->
-                <div class="w-full">
-                    <SContainer class="mb-4 md:mb-6">
+                <div class="w-auto">
+                    <SContainer class="mb-4 md:mb-6 w-auto lg:w-full">
                         <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#f5cb5c] text-center lg:text-left">
                             ⭐ Featured Products
                         </h2>
