@@ -80,6 +80,8 @@ function handleCategory(x){
             
         </div>
     <!--Sorting , Search and Categories for Mobile-->
+    <div class="flex flex-col md:hidden justify-center  h-auto w-auto"><ButtonComponent @click="mobileMenuOpen=!mobileMenuOpen">></ButtonComponent>
+    <div v-if="mobileMenuOpen">
     <div class="flex flex-col md:hidden gap-2 px-3 py-2 h-auto bg-[#242423]/50 backdrop-blur-sm " >
         <ButtonComponent @click="mobileMenuOpen=!mobileMenuOpen">Filters</ButtonComponent>
         <DropDownComponent @control-clicked="handleSorting" 
@@ -90,6 +92,8 @@ function handleCategory(x){
             <span class="text-center text-base md:text-lg py-2 md:p-4 text-white">Sorted by <span class="text-[#f5cb5c]">{{ sortControl? sortControl : "Default" }}</span></span>
             <span class="text-center text-base md:text-lg py-2 md:p-4 text-white">Applied Category <span class="text-[#f5cb5c]">{{ categoryControl? categoryControl: "None" }}</span></span>
     </div>
+    </div>
+    </div>
 
 
 
@@ -98,7 +102,7 @@ function handleCategory(x){
     <p v-else-if="error" class="text-center text-lg md:text-xl p-4 md:p-8 text-red-500"> Error {{ error }}</p>
     
     <!--The Product Grid Body-->
-    <div class="p-2 md:p-6 lg:p-8 pb-40 md:pb-40 pt-24 md:pt-32 lg:pt-40 "  v-else>
+    <div class="p-2 md:p-6 lg:p-8 pb-40 md:pb-40 pt-6 md:pt-32 lg:pt-40 "  v-else>
     <div v-if="search.length > 0">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6"
         v-for="product in filtered_data" :key="product.id ">
