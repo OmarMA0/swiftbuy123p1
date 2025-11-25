@@ -14,16 +14,22 @@ const City = ref('')
 const Street = ref('')
 const Building = ref('')
 const Apartment = ref('')
-const if_all_fields = computed(()=>{
-    if(firstName.value && lastName.value && address.value && phone.value && City.value && Street.value && Building.value && Apartment.value){
-        return true
-    }
-    else return false
-})
+const if_all_fields = ref(true)
 function handleSubmit(){
- if(if_all_fields.value){
-    router.push('/')
- }
+ if(firstName.value && lastName.value && address.value && phone.value && City.value && Street.value && Building.value && Apartment.value){
+        if_all_fields.value= true
+        router.push('/')
+    }
+    if_all_fields.value= false
+}
+const visaCheck = ref(false)
+const palCheck = ref(false)
+const deliveryCheck = ref(false)
+function handle_checkbox(TheCheck){
+visaCheck.value = false
+palCheck.value= false
+deliveryCheck.value = false
+TheCheck.value = true
 }
 </script>
 
@@ -45,10 +51,11 @@ function handleSubmit(){
                 <p>Apartment : <baseInput v-model="Apartment"></baseInput></p>
             </div>
             <p> Payment Methods</p>
-            <checkBox>Visa</checkBox>
-            <p>or Pay at Delivery</p>
+            <checkBox @click="handle_checkbox(visaCheck)" v-model="visaCheck">Visa</checkBox>
+            <checkBox @click="handle_checkbox(palCheck)" v-model="palCheck">PayPal</checkBox>
+            <checkBox @click="handle_checkbox(deliveryCheck)" v-model="deliveryCheck">Pay at delivery</checkBox>
             <ButtonComponent @click="handleSubmit">Submit Order</ButtonComponent>
-            <p v-if="!if_all_fields">Please fill in all fields</p>
+            <p class="text-red-500" v-if="!if_all_fields">Please fill in all the fields</p>
         </SContainer>
     </div>
 </template>

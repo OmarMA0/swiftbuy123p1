@@ -113,10 +113,12 @@ calculate_featured();
                     <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#f5cb5c] p-2 rounded mb-4">Jewelery</h3>
                     <rowShowItems :products="[...products].filter(p=>p.category === 'jewelery')"></rowShowItems>
                     </div>
+                    <!---Clothing Men--->
                     <div class="flex flex-col">
                     <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#f5cb5c] p-2 rounded mb-4">Clothing for Men</h3>
                     <rowShowItems :products="[...products].filter(p=>p.category === `men's clothing`)"></rowShowItems>
                     </div>
+                    <!---Clothing Women--->
                     <div class="flex flex-col">
                     <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#f5cb5c] p-2 rounded mb-4">Clothing for Women</h3>
                     <rowShowItems :products="[...products].filter(p=>p.category === `women's clothing`)"></rowShowItems>
