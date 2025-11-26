@@ -22,15 +22,7 @@ function handleSubmit(){
     }
     if_all_fields.value= false
 }
-const visaCheck = ref(false)
-const palCheck = ref(false)
-const deliveryCheck = ref(false)
-function handle_checkbox(TheCheck){
-visaCheck.value = false
-palCheck.value= false
-deliveryCheck.value = false
-TheCheck.value = true
-}
+const paymentMethod = ref('')
 </script>
 
 <template>
@@ -51,9 +43,9 @@ TheCheck.value = true
                 <p>Apartment : <baseInput v-model="Apartment"></baseInput></p>
             </div>
             <p> Payment Methods</p>
-            <checkBox @click="handle_checkbox(visaCheck)" v-model="visaCheck">Visa</checkBox>
-            <checkBox @click="handle_checkbox(palCheck)" v-model="palCheck">PayPal</checkBox>
-            <checkBox @click="handle_checkbox(deliveryCheck)" v-model="deliveryCheck">Pay at delivery</checkBox>
+            <checkBox v-model="paymentMethod" value="visa">Visa</checkBox>
+            <checkBox v-model="paymentMethod" value="paypal">PayPal</checkBox>
+            <checkBox v-model="paymentMethod" value="delivery">Pay at delivery</checkBox>
             <ButtonComponent @click="handleSubmit">Submit Order</ButtonComponent>
             <p class="text-red-500" v-if="!if_all_fields">Please fill in all the fields</p>
         </SContainer>
