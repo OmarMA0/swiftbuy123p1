@@ -102,7 +102,7 @@ function handleCategory(x){
     <p v-else-if="error" class="text-center text-lg md:text-xl p-4 md:p-8 text-red-500"> Error {{ error }}</p>
     
     <!--The Product Grid Body-->
-    <div class="p-2 md:p-6 lg:p-8 pb-40 md:pb-40 pt-6 md:pt-32 lg:pt-40 "  v-else>
+    <div class="p-2 md:p-6 lg:p-8 pb-2 md:pb-40 pt-6 md:pt-32 lg:pt-40 "  v-else>
     <div v-if="search.length > 0">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6"
         v-for="product in filtered_data" :key="product.id ">
@@ -112,17 +112,18 @@ function handleCategory(x){
 
     <div v-else class="text-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8 lg:gap-50">
         <div v-for="product in paginated_products" :key="product.id ">
-            <ProductCard :product="product"></ProductCard></div>
+            <ProductCard :product="product"></ProductCard></div></div>
         <!-- Bottom Control -->
-        <div class="fixed bottom-4 w-auto left-1/2 -translate-x-1/2 flex flex-row items-center gap-2 sm:gap-4 bg-[#242423]/90 p-3 md:p-4 rounded-lg border-2 border-[#f5cb5c] backdrop-blur-sm">
+    <div class="flex flex-col justify-end pt-40 sm: lg:pt-90">
+        <div class="block w-fit mt-auto mx-auto flex flex-row items-center gap-2 sm:gap-4 bg-[#242423]/90 p-3 md:p-4 rounded-lg border-2 border-[#f5cb5c] backdrop-blur-sm">
             <ButtonComponent class="w-full min-w-30 text-sm md:text-base"
             @click="prev_page">< Previous </ButtonComponent>
             <p class="m-0 px-3 py-2 text-base md:text-lg border-2 border-[#f5cb5c] font-bold drop-shadow-lg rounded bg-[#242423] text-white whitespace-nowrap">{{ current_page }}</p>
             <ButtonComponent class="w-full min-w-30 text-sm md:text-base"
              @click="next_page"> Next page ></ButtonComponent>
         </div>
+     </div>
     
-    </div>
     </div>
     
 </template>
