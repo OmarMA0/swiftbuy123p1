@@ -114,11 +114,11 @@ function handleCategory(x){
         <div v-for="product in paginated_products" :key="product.id ">
             <ProductCard :product="product"></ProductCard></div>
         <!-- Bottom Control -->
-        <div class="fixed bottom-4 left-1/2 -translate-x-1/2 flex flex-col sm:flex-row items-center gap-2 sm:gap-4 bg-[#242423]/90 p-3 md:p-4 rounded-lg border-2 border-[#f5cb5c] backdrop-blur-sm">
-            <ButtonComponent class="w-full sm:w-auto text-sm md:text-base"
+        <div class="fixed bottom-4 w-auto left-1/2 -translate-x-1/2 flex flex-row items-center gap-2 sm:gap-4 bg-[#242423]/90 p-3 md:p-4 rounded-lg border-2 border-[#f5cb5c] backdrop-blur-sm">
+            <ButtonComponent class="w-full min-w-30 text-sm md:text-base"
             @click="prev_page">< Previous </ButtonComponent>
             <p class="m-0 px-3 py-2 text-base md:text-lg border-2 border-[#f5cb5c] font-bold drop-shadow-lg rounded bg-[#242423] text-white whitespace-nowrap">{{ current_page }}</p>
-            <ButtonComponent class="w-full sm:w-auto text-sm md:text-base"
+            <ButtonComponent class="w-full min-w-30 text-sm md:text-base"
              @click="next_page"> Next page ></ButtonComponent>
         </div>
     
