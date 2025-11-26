@@ -17,7 +17,7 @@ const Carted_sum = computed(()=>{
 })
 function checkout(){
     if (carted_products){
-    carted_products.value = []
+    //carted_products.value = []
     router.push('/Delivery')
     }
 }
